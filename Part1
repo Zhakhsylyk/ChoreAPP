@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/enterChoreid"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="385dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:hint="@string/enter_chore"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="11dp" />
+
+    <EditText
+        android:id="@+id/Assignedto"
+        android:layout_width="385dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/assigned_to"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/enterChoreid"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="11dp" />
+
+    <EditText
+        android:id="@+id/Assignedby"
+        android:layout_width="385dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/Assigned_by"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/Assignedto"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="11dp" />
+
+    <Button
+        android:id="@+id/SaveChore"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:width="385dp"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:hint="@string/savechore"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@+id/Assignedby"
+        app:rippleColor="@color/white"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="10dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
