@@ -1,0 +1,52 @@
+package com.example.choreapp.activity
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.choreapp.R
+import com.example.choreapp.db.ChoreDBHandler
+import com.example.choreapp.db.ChoreListAdapter
+import com.example.choreapp.model.Chore
+import kotlinx.android.synthetic.main.activity_chore_list.*
+
+
+class choreListActivity : AppCompatActivity() {
+    private var adapter: ChoreListAdapter? = null
+    private var choreList: ArrayList<Chore>? = null
+    private var choreListItems: ArrayList<Chore>? = null
+
+    private var layoutManager: RecyclerView.LayoutManager? = null
+    var dbHandler: ChoreDBHandler? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_chore_list)
+        dbHandler = ChoreDBHandler(this)
+
+        choreList = ArrayList<Chore>()
+        choreListItems = ArrayList()
+        layoutManager = LinearLayoutManager(this)
+        adapter = ChoreListAdapter(choreListItems!!, this)
+
+        // setup list od recucler view
+        recyclerViewID.layoutManager = layoutManager
+        recyclerViewID.adapter = adapter
+
+        // load our chores
+        choreList = dbHandler!!.readChores()
+
+
+
+        for (c in choreList!!.iterator()) {
+            val chore = Chore()
+            chore.name = c.name
+            chore.assignedBy = c.assignedBy
+            chore.assignedTo=chore.assignedTo
+            choreListItems!!.add(chore)
+
+        }
+        adapter!!.notifyDataSetChanged()
+    }
+}
